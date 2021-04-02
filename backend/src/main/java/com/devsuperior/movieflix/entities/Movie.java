@@ -17,6 +17,7 @@ public class Movie implements Serializable {
     @Column(name = "img_url")
     private String imgUrl;
     private String synopsis;
+    private Long genreId;
 
     public Movie() {
     }
@@ -71,5 +72,13 @@ public class Movie implements Serializable {
 
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
+    }
+
+    public Long getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(Long genreId) {
+        this.genreId = genreId;
     }
 }

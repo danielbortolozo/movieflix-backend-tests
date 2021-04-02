@@ -10,8 +10,8 @@ import java.io.Serializable;
 
 public class ReviewDTO implements Serializable {
     private Long id;
-    private User idUser;
-    private Movie idMovie;
+    private Long idUser;
+    private Long idMovie;
     private String text;
 
     public ReviewDTO() {
@@ -25,19 +25,23 @@ public class ReviewDTO implements Serializable {
         this.id = id;
     }
 
-    public User getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(User idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
-    public Movie getIdMovie() {
+    public Long getIdMovie() {
         return idMovie;
     }
 
-    public void setIdMovie(Movie idMovie) {
+    public void setIdMovie(Long idMovie) {
+        this.idMovie = idMovie;
+    }
+
+    public void setIdMovie(long idMovie) {
         this.idMovie = idMovie;
     }
 

@@ -5,16 +5,16 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "genre")
+@Table(name = "review")
 public class Review implements Serializable {
 
     private static final long serialVersionUID =1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @ManyToOne
     private User idUser;
-    @OneToMany
+    @ManyToOne
     private Movie idMovie;
     private String text;
 
