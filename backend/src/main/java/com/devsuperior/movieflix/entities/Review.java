@@ -1,0 +1,59 @@
+package com.devsuperior.movieflix.entities;
+
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "genre")
+public class Review implements Serializable {
+
+    private static final long serialVersionUID =1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @OneToMany
+    private User idUser;
+    @OneToMany
+    private Movie idMovie;
+    private String text;
+
+    public Review() {
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(User idUser) {
+        this.idUser = idUser;
+    }
+
+    public Movie getIdMovie() {
+        return idMovie;
+    }
+
+    public void setIdMovie(Movie idMovie) {
+        this.idMovie = idMovie;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+}
