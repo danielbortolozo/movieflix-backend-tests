@@ -30,11 +30,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private JwtTokenStore tokenStore;
 
     private static final String[] PUBLIC = {"/oauth/token", "/h2-console/**"};
-    private static final String[] OPERATOR_OR_ADMIN = { "/products/**", "/categories/**" };
-    private static final String[] ADMIN = { "/users/**" };
+    private static final String[] VISITOR_OR_MEMBER = { "/genres/**", "/categories/**" };
+    private static final String[] MEMBER = { "/users/**" };
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+        System.out.println("Resource server Tokennn: "+tokenStore);
         resources.tokenStore(tokenStore);
     }
 
@@ -46,9 +47,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         }
         http.authorizeRequests()
            .antMatchers(PUBLIC).permitAll()
-           .antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).permitAll()
-           .antMatchers(OPERATOR_OR_ADMIN).hasAnyRole("OPERATOR", "ADMIN")
-           .antMatchers(ADMIN).hasRole("ADMIN")
+           .antMatchers(HttpMethod.GET, VISITOR_OR_MEMBER).permitAll()
+           .antMatchers(VISITOR_OR_MEMBER).hasAnyRole("VISITOR", "MEMBER")
+           .antMatchers(MEMBER).hasRole("MEMBER")
            .anyRequest().authenticated();
     }
 

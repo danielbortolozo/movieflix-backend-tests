@@ -47,12 +47,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         System.out.println("entrei no clients token authorization server.");
+
         clients.inMemory()
                 .withClient(clientId)
                 .secret(passwordEncoder.encode(clientSecret))
                 .scopes("read", "write")
                 .authorizedGrantTypes("password")
                 .accessTokenValiditySeconds(jwtDuration);
+
     }
 
     @Override
