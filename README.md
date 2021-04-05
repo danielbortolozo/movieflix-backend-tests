@@ -4,7 +4,7 @@
 # Sobre o projeto
 
 
-Este projeto foi desenvolvido como desafio no bootcamp 2.0 do curso devSuperior com professor Neri.[DevSuperior](https://devsuperior.com "Site da DevSuperior").
+Este projeto foi desenvolvido como desafio no bootcamp 2.0 na plataforma de ensino devSuperior com professor Neri.[DevSuperior](https://devsuperior.com "Site da DevSuperior").
 
 Esta aplicação é sobre avaliações dada sobre um filme. Os filmes são avaliados pelos membros da plataforma, os visitantes não podem avaliar os filmes, apenas consultar os filmes avaliados pelos membros.
 
