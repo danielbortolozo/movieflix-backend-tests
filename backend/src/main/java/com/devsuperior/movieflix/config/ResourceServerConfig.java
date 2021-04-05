@@ -31,7 +31,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     private static final String[] PUBLIC = {"/oauth/token", "/h2-console/**", "/users/**"};
     private static final String[] VISITOR_OR_MEMBER = {"/genres/**", "/categories/**", "/movies/**"};
-    private static final String[] MEMBER = {};
+    private static final String[] MEMBER = {"/reviews/**"};
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.devsuperior.movieflix.entities.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -66,7 +67,6 @@ public class ReviewResourceIT {
 
 	@Test
 	public void insertShouldReturnUnauthorizedWhenNotValidToken() throws Exception {
-
 		String jsonBody = objectMapper.writeValueAsString(newReviewDTO);
 		
 		ResultActions result =
@@ -80,8 +80,7 @@ public class ReviewResourceIT {
 	
 	@Test
 	public void insertShouldReturnForbiddenWhenVisitorAuthenticated() throws Exception {
-	
-		String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
+	    String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
 		
 		String jsonBody = objectMapper.writeValueAsString(newReviewDTO);
 		
@@ -97,9 +96,12 @@ public class ReviewResourceIT {
 	
 	@Test
 	public void insertShouldInsertReviewWhenMemberAuthenticatedAndValidData() throws Exception {
-		
-		String accessToken = obtainAccessToken(memberUsername, memberPassword);
-		
+	    String accessToken = obtainAccessToken(memberUsername, memberPassword);
+		User user = new User();
+		user.setId(2L);
+		user.setUserName("Ana");
+		user.setEmail(memberUsername);
+		newReviewDTO.setUser(user);
 		String jsonBody = objectMapper.writeValueAsString(newReviewDTO);
 		
 		long expectedCount = reviewRepository.count() + 1;
@@ -114,7 +116,7 @@ public class ReviewResourceIT {
 		result.andExpect(status().isCreated());
 		result.andExpect(jsonPath("$.user").exists());
 		result.andExpect(jsonPath("$.user.id").exists());
-		result.andExpect(jsonPath("$.user.name").exists());
+		result.andExpect(jsonPath("$.user.userName").exists());
 		result.andExpect(jsonPath("$.user.email").value(memberUsername));
 		Assertions.assertEquals(expectedCount, reviewRepository.count());
 	}

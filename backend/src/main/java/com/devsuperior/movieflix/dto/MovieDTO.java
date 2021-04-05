@@ -34,7 +34,7 @@ public class MovieDTO implements Serializable {
             ReviewDTO reviewDTO = new ReviewDTO();
 
             reviewDTO.setIdMovie(r.getMovie().getId());
-            reviewDTO.setIdUser(r.getUser().getId());
+            reviewDTO.setUser(r.getUser());
             reviewDTO.setText(r.getText());
             reviewDTO.setId(r.getId());
             reviews.add(reviewDTO);
