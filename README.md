@@ -1,5 +1,4 @@
-# movieflix-backend-tests
-# Big Game Survey 
+# Movie Flix 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/danielbortolozo/movieflix-backend-tests/blob/main/LICENSE) 
 
 # Sobre o projeto
