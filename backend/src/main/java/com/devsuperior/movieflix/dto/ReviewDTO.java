@@ -1,11 +1,7 @@
 package com.devsuperior.movieflix.dto;
 
-import com.devsuperior.movieflix.entities.Movie;
-import com.devsuperior.movieflix.entities.User;
+import com.devsuperior.movieflix.entities.Review;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
 
 public class ReviewDTO implements Serializable {
@@ -15,6 +11,13 @@ public class ReviewDTO implements Serializable {
     private String text;
 
     public ReviewDTO() {
+    }
+
+    public ReviewDTO(Review review) {
+        id = review.getId();
+        idMovie = review.getMovie().getId();
+        idUser = review.getUser().getId();
+        text = review.getText();
     }
 
     public Long getId() {

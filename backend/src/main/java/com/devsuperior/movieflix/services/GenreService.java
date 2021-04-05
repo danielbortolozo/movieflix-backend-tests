@@ -6,6 +6,7 @@ import com.devsuperior.movieflix.repositories.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class GenreService {
@@ -14,8 +15,10 @@ public class GenreService {
     private GenreRepository repository;
 
     public List<GenreDTO> findAll() {
+        List<GenreDTO> dtos = new ArrayList<>();
         List<Genre> lista = repository.findAll();
-        return (List<GenreDTO>) lista.stream().map(g -> new GenreDTO(g) );
+        lista.stream().forEach(genre -> dtos.add(new GenreDTO(genre)));
+        return dtos;
     }
 
 }

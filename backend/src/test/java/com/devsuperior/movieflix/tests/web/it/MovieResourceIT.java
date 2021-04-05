@@ -137,9 +137,7 @@ public class MovieResourceIT {
 
 	@Test
 	public void findAllPagedShouldReturnOrderedPageWhenVisitorAuthenticated() throws Exception {
-
 		String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
-
 		long countMovies = movieRepository.count();
 		
 		ResultActions result =

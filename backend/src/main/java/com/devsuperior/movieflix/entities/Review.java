@@ -13,9 +13,12 @@ public class Review implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private User idUser;
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_Review_userId"))
+    private User user;
     @ManyToOne
-    private Movie idMovie;
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_Review_movieId"))
+    private Movie movie;
+    @Column(columnDefinition = "TEXT")
     private String text;
 
     public Review() {
@@ -33,20 +36,20 @@ public class Review implements Serializable {
         this.id = id;
     }
 
-    public User getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(User idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Movie getIdMovie() {
-        return idMovie;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setIdMovie(Movie idMovie) {
-        this.idMovie = idMovie;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public String getText() {

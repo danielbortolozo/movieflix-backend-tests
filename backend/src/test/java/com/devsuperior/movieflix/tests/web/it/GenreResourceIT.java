@@ -51,7 +51,7 @@ public class GenreResourceIT {
 	private String memberPassword;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp()  {
 		
 		visitorUsername = "bob@gmail.com";
 		visitorPassword = "123456";
@@ -74,8 +74,9 @@ public class GenreResourceIT {
 
 		String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
 		
-		long countGenres = genreRepository.count();		
+		long countGenres = genreRepository.count();
 
+	System.out.println("token :"+accessToken);
 		ResultActions result =
 				mockMvc.perform(get("/genres")
 					.header("Authorization", "Bearer " + accessToken)

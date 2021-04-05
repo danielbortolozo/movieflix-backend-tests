@@ -1,8 +1,12 @@
 package com.devsuperior.movieflix.entities;
 
 
+import org.springframework.data.repository.cdi.Eager;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "movie")
@@ -17,7 +21,12 @@ public class Movie implements Serializable {
     @Column(name = "img_url")
     private String imgUrl;
     private String synopsis;
-    private Long genreId;
+    @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_Movie_genreId"))
+    private Genre genre;
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+    private List<Review> reviews = new ArrayList<>();
 
     public Movie() {
     }
@@ -74,11 +83,19 @@ public class Movie implements Serializable {
         this.synopsis = synopsis;
     }
 
-    public Long getGenreId() {
-        return genreId;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setGenreId(Long genreId) {
-        this.genreId = genreId;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
