@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.entities.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -97,7 +98,7 @@ public class ReviewResourceIT {
 	@Test
 	public void insertShouldInsertReviewWhenMemberAuthenticatedAndValidData() throws Exception {
 	    String accessToken = obtainAccessToken(memberUsername, memberPassword);
-		User user = new User();
+		UserDTO user = new UserDTO();
 		user.setId(2L);
 		user.setUserName("Ana");
 		user.setEmail(memberUsername);

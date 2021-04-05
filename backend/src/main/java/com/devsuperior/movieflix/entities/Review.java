@@ -24,6 +24,7 @@ public class Review implements Serializable {
     public Review() {
     }
 
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }

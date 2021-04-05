@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.services;
 
 import com.devsuperior.movieflix.dto.ReviewDTO;
+import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.entities.User;
@@ -38,7 +39,15 @@ public class ReviewService {
         entity.setText(dto.getText());
         Movie movie = movieRepository.getOne(dto.getIdMovie());
         entity.setMovie(movie);
-        entity.setUser(dto.getUser());
+        entity.setUser(converterUserDTOforUser(dto.getUser()));
+    }
+
+    private User converterUserDTOforUser(UserDTO dto) {
+        User user = new User();
+        user.setUserName(dto.getUserName());
+        user.setEmail(dto.getEmail());
+        user.setId(dto.getId());
+        return user;
     }
 
 }

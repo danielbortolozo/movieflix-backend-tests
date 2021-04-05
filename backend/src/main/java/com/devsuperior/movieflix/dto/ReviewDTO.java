@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class ReviewDTO implements Serializable {
     private Long id;
-    private User user;
+    private UserDTO user;
     private Long idMovie;
     @Size(min = 5, max = 80, message = "Deve ter entre 5 e 200 caracteres.")
     @NotBlank(message = "A avaliação é requirida.")
@@ -21,8 +21,16 @@ public class ReviewDTO implements Serializable {
     public ReviewDTO(Review review) {
         id = review.getId();
         idMovie = review.getMovie().getId();
-        user = review.getUser();
+        user = converterUserDTO(review.getUser());
         text = review.getText();
+    }
+
+    private UserDTO converterUserDTO(User user) {
+        UserDTO userDTO =  new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setUserName(user.getUserName());
+        userDTO.setEmail(user.getEmail());
+        return  userDTO;
     }
 
     public Long getId() {
@@ -33,11 +41,11 @@ public class ReviewDTO implements Serializable {
         this.id = id;
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 
