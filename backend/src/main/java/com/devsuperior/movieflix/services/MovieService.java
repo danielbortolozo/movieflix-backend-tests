@@ -29,17 +29,16 @@ public class MovieService {
    @Transactional(readOnly = true)
    public MovieDTO findById(Long id) {
        Optional<Movie> movie = repository.findById(id);
-       Movie entity = movie.orElseThrow(() -> new ResourceNotFoundException("Entity not found."));
+       movie.orElseThrow(() -> new ResourceNotFoundException("Entity not found."));
        return new MovieDTO(movie.get());
    }
 
-    @Transactional(readOnly = true)
-    public Page<MovieDTO> findAllPaged(Long genreId, PageRequest pageRequest) {
-        Genre genre = (genreId == 0) ? null : genreRepository.getOne(genreId);
-        Page<Movie> list = repository.find(genre, pageRequest);
-        repository.findMoviesWithGenre(list.getContent());
-        return list.map(x -> new MovieDTO(x));
-    }
+   @Transactional(readOnly = true)
+   public Page<MovieDTO> findAllPaged(Long genreId, PageRequest pageRequest) {
+      Genre genre = (genreId == 0) ? null : genreRepository.getOne(genreId);
+      Page<Movie> list = repository.find(genre, pageRequest);
+      return list.map(x -> new MovieDTO(x));
+   }
 
 
 }

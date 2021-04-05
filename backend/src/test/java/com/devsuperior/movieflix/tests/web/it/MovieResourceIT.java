@@ -61,7 +61,6 @@ public class MovieResourceIT {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-
 		existingId = 1L;
 		nonExistingId = 100000L;
 		genreId = 1L;
@@ -74,7 +73,6 @@ public class MovieResourceIT {
 
 	@Test
 	public void findByIdShouldReturnUnauthorizedWhenNotValidToken() throws Exception {
-
 		ResultActions result =
 				mockMvc.perform(get("/movies/{id}", existingId)
 					.contentType(MediaType.APPLICATION_JSON));
@@ -84,7 +82,6 @@ public class MovieResourceIT {
 
 	@Test
 	public void findByIdShouldReturnMovieAndReviewsWhenUserVisitorAuthenticated() throws Exception {
-
 		String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
 		
 		ResultActions result =
@@ -99,9 +96,8 @@ public class MovieResourceIT {
 
 	@Test
 	public void findByIdShouldReturnMovieAndReviewsWhenMemberAuthenticated() throws Exception {
-
 		String accessToken = obtainAccessToken(memberUsername, memberPassword);
-		
+
 		ResultActions result =
 				mockMvc.perform(get("/movies/{id}", existingId)
 					.header("Authorization", "Bearer " + accessToken)
@@ -114,7 +110,6 @@ public class MovieResourceIT {
 
 	@Test
 	public void findByIdShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
-
 		String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
 		
 		ResultActions result =
@@ -171,14 +166,11 @@ public class MovieResourceIT {
 
 	@Test
 	public void findAllPagedShouldReturnFilteredMoviesWhenGenreIsInformed() throws Exception {
-
 		String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
-
 		ResultActions result =
 				mockMvc.perform(get("/movies?genreId=" + genreId)
 					.header("Authorization", "Bearer " + accessToken)
 					.contentType(MediaType.APPLICATION_JSON));
-
 		result.andExpect(status().isOk());
 		result.andExpect(jsonPath("$.content").exists());
 		Assertions.assertTrue(getMovies(result).length > 0);
@@ -216,7 +208,6 @@ public class MovieResourceIT {
 	}
 	
 	private String obtainAccessToken(String username, String password) throws Exception {
-
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("grant_type", "password");
 		params.add("client_id", clientId);
@@ -229,7 +220,6 @@ public class MovieResourceIT {
 				.andExpect(status().isOk()).andExpect(content().contentType("application/json;charset=UTF-8"));
 
 		String resultString = result.andReturn().getResponse().getContentAsString();
-
 		JacksonJsonParser jsonParser = new JacksonJsonParser();
 		return jsonParser.parseMap(resultString).get("access_token").toString();
 	}
