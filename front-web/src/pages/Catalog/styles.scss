@@ -1,0 +1,14 @@
+.catalog-container {
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.catalog-movies {
+    margin-top: 45px ;    
+    display: grid;
+    grid-gap: 30px 20px;
+    grid-template-columns: repeat(auto-fill, 280px);
+    justify-content: space-between;
+    
+}
