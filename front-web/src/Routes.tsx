@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './core/components/Navbar';
 import Auth from './pages/Auth';
 import Catalog from './pages/Catalog';
+import MovieDetails from './pages/Catalog/components/MovieDetails';
 
 
 const Routes = () => (
@@ -12,9 +13,12 @@ const Routes = () => (
          <Route path="/" exact> 
            <Auth />
          </Route>  
-         <Route path="/catalog"> 
+         <Route path="/movies" exact> 
            <Catalog />
-         </Route>       
+         </Route>    
+         <Route path="/movies/:movieId"> 
+           <MovieDetails />
+         </Route>   
       </Switch>   
    </BrowserRouter>
 

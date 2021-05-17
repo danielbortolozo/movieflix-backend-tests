@@ -2,6 +2,7 @@
 import React from 'react';
 import './styles.scss';
 import MovieCard from './components/MovieCard';
+import { Link } from 'react-router-dom';
 
 const Catalog = () => (
   <>
@@ -11,13 +12,10 @@ const Catalog = () => (
         </h1>
 
         <div className="catalog-movies"> 
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-           
+            <Link to="/movies/1"><MovieCard /></Link>
+            <Link to="/movies/2"><MovieCard /></Link> 
+            <Link to="/movies/3"><MovieCard /></Link>
+            <Link to="/movies/4"><MovieCard /></Link>
         </div>
     </div>
     
