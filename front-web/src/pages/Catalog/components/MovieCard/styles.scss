@@ -1,6 +1,6 @@
 .movie-card {
        
-    height: 322px;    
+    height: 372px;    
     padding: 20px 0px 30px 0px;   
     text-align: center;
 }
@@ -15,6 +15,7 @@
        line-height: 27px;
        letter-spacing: -0.015em;     
        mix-blend-mode: normal;
+       color: #FFf;
     }
     .movie-year {
        font-size: 16px;
@@ -30,5 +31,13 @@
        line-height: 19px;
        letter-spacing: -0.015em;
        mix-blend-mode: normal;
+       color: #FFf;
     }
+}
+.movie-card-image {
+   width        : 270px;
+   height       : 160px;
+   border-radius: 0px;
+   padding-top  : 20px;
+   margin-bottom: 15px;
 }
