@@ -5,6 +5,7 @@ import MovieCard from './components/MovieCard';
 import { Link } from 'react-router-dom';
 import { makeRequest } from '../../core/utils/request';
 import { MovieResponse } from '../../core/types/Movie';
+import Pagination from '../../core/components/Pagination';
 const Catalog = () => {
       
 //quando o componente iniciar buscar a lista de movies.
@@ -41,6 +42,8 @@ useEffect(() => {
             ) )}
             
         </div>
+
+        <Pagination />
     </div>
     );
 };

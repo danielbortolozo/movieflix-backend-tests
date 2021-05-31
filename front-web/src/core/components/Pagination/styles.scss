@@ -1,0 +1,19 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    border: 1px solid #fff;
+    margin: 40px 50%;
+    padding-top: 10px;
+    
+}
+
+.pagination-item {
+    width: 50px;
+    height: 50px;
+    background: #FFC700;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 25px;
+}
