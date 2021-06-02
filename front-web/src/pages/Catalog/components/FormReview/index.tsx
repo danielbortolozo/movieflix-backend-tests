@@ -57,7 +57,7 @@ const FormReview = () => {
                 placeholder="Digite aqui a sua avaliação..."
             ></textarea>
 
-            <button className="form-review-button">
+            <button className=" form-review-button">
                 Salvar avaliação
             </button>
 

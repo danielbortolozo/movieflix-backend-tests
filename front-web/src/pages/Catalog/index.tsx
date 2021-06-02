@@ -11,16 +11,17 @@ const Catalog = () => {
 //quando o componente iniciar buscar a lista de movies.
 
    const [movieResponse, setMovieResponse] = useState<MovieResponse>(); 
+   const [activePage, setActivePage] = useState(0);
 
 console.log('Response: ',movieResponse);
 
 useEffect(() => {
     const params = {
         page: 0,
-        linesPerPage: 8
+        linesPerPage: 4
     }
 
-   console.log("chamar endpoint:");
+   
     makeRequest({url: '/movies', params})     
      .then(response => setMovieResponse(response.data));
      
@@ -43,7 +44,13 @@ useEffect(() => {
             
         </div>
 
-        <Pagination />
+        {movieResponse && ( 
+         <Pagination 
+         activePage={activePage}
+         totalPages={movieResponse.totalPages}
+         onChange={page => setActivePage(page)}
+         />
+        )}
     </div>
     );
 };

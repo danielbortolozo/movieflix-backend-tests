@@ -39,7 +39,7 @@ const MovieDetails = () => {
                  </div>   
                 
                  <div className="col-6">
-                     <h1>{movie?.title}</h1>
+                     <h3 className="movie-details-title">{movie?.title}</h3>
                      <h6 className="movie-year-detail">
                          {movie?.year}
                      </h6>
