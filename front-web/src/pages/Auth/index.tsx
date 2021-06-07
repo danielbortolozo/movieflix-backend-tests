@@ -21,7 +21,9 @@ const Auth = () => (
            <Route path="/">
               <Login />       
            </Route>                         
-         </Switch>     
+         </Switch> 
+
+   
         </div>
     </div>
 )

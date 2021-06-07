@@ -1,6 +1,9 @@
+import jwtDecode from "jwt-decode";
 import history from "./history";
 
 
+export const CLIENT_ID = 'ds-movie-flix';
+export const CLIENT_SECRET = 'ds-movie-flix-123';
 
 type LoginResponse = {
     access_token: string,
@@ -33,39 +36,40 @@ export const getSessionData = () => {
     return parsedSessionData as LoginResponse;
 }
 
-// export const getAccessTokenDecoded = () => {
-//     const sessionData = getSessionData();
 
-//     try {
-//        const tokenDecoded = jwtDecode(sessionData.access_token);
-//        return tokenDecoded as AccessToken;
-//     }catch(error) {
-//        return {} as AccessToken;
-//     }
+export const getAccessTokenDecoded = () => {
+    const sessionData = getSessionData();
+
+    try {
+       const tokenDecoded = jwtDecode(sessionData.access_token);
+       return tokenDecoded as AccessToken;
+    }catch(error) {
+       return {} as AccessToken;
+    }
     
-// } 
+} 
 
-// export const isTokenValid = () => {
-//     const { exp } = getAccessTokenDecoded();
+export const isTokenValid = () => {
+    const { exp } = getAccessTokenDecoded();
 
-//     return Date.now() <= exp * 1000;   
-// }
+    return Date.now() <= exp * 1000;   
+}
 
-// export const isAuthenticated = () => {
-//    const sessionData = getSessionData();
-// console.log('tokennn: ', sessionData.access_token)
-//    return sessionData.access_token && isTokenValid();
-// }
+export const isAuthenticated = () => {
+   const sessionData = getSessionData();
 
-// export const isAllowedByRole = (routeRoles: Role[] = []) => {
+   return sessionData.access_token && isTokenValid();
+}
 
-//     if (routeRoles.length === 0) {
-//         return true;
-//     }
-//     const { authorities } = getAccessTokenDecoded();
+export const isAllowedByRole = (routeRoles: Role[] = []) => {
 
-//     return routeRoles.some(role => authorities?.includes(role));
-// }
+    if (routeRoles.length === 0) {
+        return true;
+    }
+    const { authorities } = getAccessTokenDecoded();
+
+    return routeRoles.some(role => authorities?.includes(role));
+}
 
 export const logout = () => {
     localStorage.removeItem('authData');

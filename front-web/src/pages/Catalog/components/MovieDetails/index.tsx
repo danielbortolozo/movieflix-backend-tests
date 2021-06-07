@@ -6,7 +6,7 @@ import FormReview from '../FormReview';
 import CardReview from '../CardReview';
 import './styles.scss';
 import { useEffect, useState } from 'react';
-import { makeRequest } from '../../../../core/utils/request';
+import { makePrivateRequest} from '../../../../core/utils/request';
 import { Movie } from '../../../../core/types/Movie';
 
 type ParamsType = {
@@ -20,7 +20,7 @@ const MovieDetails = () => {
     console.log('Movie :', movie);
     
     useEffect(() =>  {
-        makeRequest({ url: `/movies/${movieId}`})
+        makePrivateRequest({ url: `/movies/${movieId}`})
           .then(response => setMovie(response.data));
     }, [movieId]); 
    

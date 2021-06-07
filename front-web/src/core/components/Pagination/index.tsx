@@ -22,10 +22,7 @@ const Pagination = ({totalPages, activePage, onChange}: Props) => {
             >
             {item+1}
             </div>
-         ))}
-
-            
-            
+         ))}           
         </div>
     )
 

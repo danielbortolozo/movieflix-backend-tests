@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './styles.scss';
 import MovieCard from './components/MovieCard';
 import { Link } from 'react-router-dom';
-import { makeRequest } from '../../core/utils/request';
+import { makePrivateRequest } from '../../core/utils/request';
 import { MovieResponse } from '../../core/types/Movie';
 import Pagination from '../../core/components/Pagination';
 const Catalog = () => {
@@ -17,15 +17,14 @@ console.log('Response: ',movieResponse);
 
 useEffect(() => {
     const params = {
-        page: 0,
+        page: activePage,
         linesPerPage: 4
     }
-
-   
-    makeRequest({url: '/movies', params})     
+      
+    makePrivateRequest({url: '/movies', params})     
      .then(response => setMovieResponse(response.data));
      
-}, [])
+}, [activePage])
 
   return (
 

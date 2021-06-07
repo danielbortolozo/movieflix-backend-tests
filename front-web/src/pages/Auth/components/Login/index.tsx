@@ -4,10 +4,11 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import ButtonIcon from '../../../../core/components/ButtonIcon';
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
-import { ReactComponent as AuthImage } from '../../../../core/assets/img/auth.svg';
+import { makeLogin, makePrivateRequest } from '../../../../core/utils/request';
+import { saveSessionData } from '../../../../core/utils/auth';
 
 
-type FormState = {
+type FormData = {
     username: string;
     password: string;   
 }
@@ -17,26 +18,30 @@ type LocationState = {
 
 const Login = () => {
     
-    const { register,  handleSubmit, formState: { errors } } = useForm<FormState>();
+    const { register,  handleSubmit, formState: { errors } } = useForm<FormData>();
     const [hasError, setHasError] = useState(false);
+   
     const history = useHistory();
     let location = useLocation<LocationState>();
 
-    const { from } = location.state || { from: { pathname: "/" } };
+    const { from } = location.state || { from: { pathname: "/movies" } };
 
 
 
-    const onSubmit = (data: FormState) => {
-        // makeLogin(data)
-        //     .then(response => {
-        //         setHasError(false);
-        //         saveSessionData(response.data);
-        //         history.replace(from);
+    const onSubmit = (data: FormData) => {
+        
+        makeLogin(data)
+          .then(response => {
+            setHasError(false);
+             saveSessionData(response.data);
+             history.replace(from);          
+           })
+          .catch(() => {
+            setHasError(true)
+          })
+                
 
-        //     })
-        //     .catch(() => {
-        //         setHasError(true);
-        //     })
+      //  
         console.log('salvar username', data.username);
         console.log('salvar password:', data.password);
         
@@ -84,7 +89,9 @@ const Login = () => {
                 </div>
                 
                 <div className="login-submit">
-                    <ButtonIcon text="Logar" />
+                  
+                       <ButtonIcon text="Logar" />
+                      
                 </div>
               
             </form>
