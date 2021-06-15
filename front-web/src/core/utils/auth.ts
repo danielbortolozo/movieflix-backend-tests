@@ -11,7 +11,7 @@ type LoginResponse = {
     expires_in: number,
     scope: string,
     userFirstName: string,
-    userId: number
+    userId: number | undefined
 }
 
 export type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER';
@@ -73,5 +73,5 @@ export const isAllowedByRole = (routeRoles: Role[] = []) => {
 
 export const logout = () => {
     localStorage.removeItem('authData');
-    history.replace('/auth/login');
+    history.replace('/');
 }

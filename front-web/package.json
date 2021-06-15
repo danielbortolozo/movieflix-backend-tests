@@ -13,6 +13,8 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-select": "^4.0.15",
+    "@types/react-toastify": "^4.1.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "jwt-decode": "^3.1.2",
@@ -23,6 +25,9 @@
     "react-hook-form": "^7.8.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-select": "^4.3.1",
+    "react-toast-notifications": "^2.4.4",
+    "react-toastify": "^7.0.4",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },

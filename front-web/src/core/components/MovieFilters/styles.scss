@@ -1,0 +1,60 @@
+
+.movie-container-filters {
+   display: flex;
+   height: 60px;
+   align-items: center;
+   border-radius: 10px;
+   padding-left: 10px;
+}
+
+.movie-filters-select{
+   width: 30%;
+   border: none;
+}
+
+.filter-select-container{
+   border: none;
+   color: #000;
+  
+   .movie-genres-select__control {
+      height: 30px;
+      border: none;
+      border-bottom: 1px solid #FFC700;
+      border-radius: 0px;      
+      background-color: #9e9e9e;
+      
+      
+  }
+  
+  .movie-genres-select__indicator-separator {
+      display: none;
+      
+      
+  }
+  .movie-genres-select__indicator{
+    color: #6C6C6C;
+  }
+  
+  .movie-genres-select__placeholder {
+      color: #fff;
+      
+  }
+  .movie-genres-select__single-value {
+     color: #fff;
+     border: none;
+  }
+
+  .movie-genres-select__input {
+     border: #FFC700;
+     
+     
+  }
+
+ .movie-genres-select__dropdown-indicator {
+  background-color: #9e9e9e; 
+
+} 
+
+
+
+}

@@ -1,4 +1,5 @@
 .main-nav {
+    display: flex;
     height: 50px;
     color: black;
     align-items: center;
@@ -10,3 +11,26 @@
     color: black;
     
 }
+
+.nav-link {
+    font-size: 18px;  
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.5);
+    
+    padding-left: 25px;
+    &.active {
+        font-weight: bold;
+        color: #000;
+    }
+}
+
+.logout {
+    width: 88px;
+    
+    margin-left: 60%;
+    border: 1px solid #000;
+    border-radius: 10px;   
+    
+}
+
+

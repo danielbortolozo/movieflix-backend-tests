@@ -39,12 +39,7 @@ const Login = () => {
           .catch(() => {
             setHasError(true)
           })
-                
-
-      //  
-        console.log('salvar username', data.username);
-        console.log('salvar password:', data.password);
-        
+             
     }
     return (
         <AuthCard title="login">

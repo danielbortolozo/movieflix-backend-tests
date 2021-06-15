@@ -4,8 +4,8 @@ import './styles.scss';
 
 type Props = {
   movie: Movie;
-
 }
+
 const MovieCard = ({movie}:Props) => (
 
     <div className="card-base border-radius-10 movie-card">
@@ -20,7 +20,6 @@ const MovieCard = ({movie}:Props) => (
         <h6 className="movie-description">
          {movie.synopsis}
         </h6>
-
       </div>
     </div>
 );

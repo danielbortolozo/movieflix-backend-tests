@@ -25,16 +25,15 @@ export type Review = {
 export type Genre = {
     id: number;
     name: string;
-    movies: Movie[];
 }
 
 export type User = {
     id: number;
-    name: string;
-    email: string;
-    password: string;
-    roles: Role[];
-    reviews: Review[];
+    userName?: string;
+    email?: string;
+    password?: string;
+    roles?: Role[];
+    reviews?: Review[];
 }
 
 export type Role = {

@@ -28,8 +28,7 @@ export const makeRequest = (params: AxiosRequestConfig) => {
 export const makeLogin = (loginData: LoginData) => {
 
     const token = `${CLIENT_ID}:${CLIENT_SECRET}`;
-    console.log("makeLoingl......");
-
+    
     const headers =  {
        Authorization: `Basic ${window.btoa(token)}`,
        'Content-Type': 'application/x-www-form-urlencoded' 
