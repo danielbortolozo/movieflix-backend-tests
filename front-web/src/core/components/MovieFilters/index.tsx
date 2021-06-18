@@ -18,12 +18,21 @@ const MovieFilters = ({
     handleChangeCategory,
     genre
   }: Props) => {
+    const [isLoadingCategories, setIsLoadingCategories] = useState(false);
+ 
     const [genresResponse, setGenresResponse] = useState<Genre[] | undefined>(); 
   
 useEffect(() => {
 
-    makePrivateRequest({url: `/genres`})     
-  .then(response => setGenresResponse(response.data));
+  setIsLoadingCategories(true)
+  
+  makePrivateRequest({url: `/genres`})  
+  .then(response => {
+    let genreTodos: Genre = {id: 0, name: 'TODOS'};
+    response.data.unshift(genreTodos)
+    setGenresResponse(response.data)  
+  })
+  .finally(() => setIsLoadingCategories(false)) 
 }, []) 
 
  
@@ -45,14 +54,13 @@ useEffect(() => {
               value={genre}
               key={`select-${genre?.id}`}
               onChange={value => handleChangeCategory(value as Genre)}  
-              
+              isLoading={isLoadingCategories}
               theme={theme => ({
                 ...theme,
                 borderRadius: 0,
                 colors: {
-                  ...theme.colors,
-                  
-                  primary: 'gray',
+                  ...theme.colors,                  
+                  primary: 'gray'
                 },
               })}
             />
