@@ -6,6 +6,7 @@ import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.repositories.GenreRepository;
 import com.devsuperior.movieflix.repositories.MovieRepository;
+import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,10 +26,14 @@ public class MovieService {
    private MovieRepository repository;
    @Autowired
    private GenreRepository genreRepository;
+   @Autowired
+   private ReviewRepository reviewRepository;
 
    @Transactional(readOnly = true)
    public MovieDTO findById(Long id) {
        Optional<Movie> movie = repository.findById(id);
+
+      System.out.println("reviews : "+movie.get().getReviews());
        movie.orElseThrow(() -> new ResourceNotFoundException("Entity not found."));
        return new MovieDTO(movie.get());
    }

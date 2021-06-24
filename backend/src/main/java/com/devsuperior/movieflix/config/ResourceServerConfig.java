@@ -30,8 +30,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private JwtTokenStore tokenStore;
 
     private static final String[] PUBLIC = {"/oauth/token", "/h2-console/**", "/users/**"};
-    private static final String[] VISITOR_OR_MEMBER = {"/genres/**", "/categories/**", "/movies/**"};
-    private static final String[] MEMBER = {"/reviews/**"};
+    private static final String[] VISITOR_OR_MEMBER = {"/genres/**", "/categories/**", "/movies/**", "/reviews/**"};
+    private static final String[] MEMBER = {};
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -50,12 +50,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
            .antMatchers(VISITOR_OR_MEMBER).hasAnyRole("VISITOR", "MEMBER")
            .antMatchers(MEMBER).hasRole("MEMBER")
            .anyRequest().authenticated();
+        http.cors().configurationSource(corsConfigurationSource());
     }
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(Arrays.asList("*"));
+        corsConfig.setAllowedOriginPatterns(Arrays.asList("*"));
         corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "PATCH"));
         corsConfig.setAllowCredentials(true);
         corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));

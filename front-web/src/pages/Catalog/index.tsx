@@ -25,8 +25,7 @@ const Catalog = () => {
        linesPerPage: 4,
        genreId: genre?.id
     }
-    console.log('oiiididididi callback');
-    
+        
     makePrivateRequest({url: `/movies`, params})     
     .then(response => setMovieResponse(response.data));
 
@@ -37,17 +36,14 @@ console.log('Response: ',movieResponse);
 
 useEffect(() => {
     getMovies();
-    console.log('pididididi');
-    
+      
      
 }, [getMovies])
 
 
 const handleChangeCategory = (genre: Genre) => {
     setActivePage(0);
-    setGenre(genre);  
-    console.log('passsosisisis change category');
-     
+    setGenre(genre);       
   }
 
 

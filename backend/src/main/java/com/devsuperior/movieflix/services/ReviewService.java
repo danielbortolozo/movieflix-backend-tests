@@ -44,10 +44,19 @@ public class ReviewService {
 
     private User converterUserDTOforUser(UserDTO dto) {
         User user = new User();
-        user.setUserName(dto.getUserName());
-        user.setEmail(dto.getEmail());
-        user.setId(dto.getId());
-        return user;
+        if (dto != null) {
+            user.setUserName(dto.getUserName());
+            user.setEmail(dto.getEmail());
+            user.setId(dto.getId());
+            return user;
+        }
+        return  null;
     }
+    @Transactional(readOnly = true)
+    public Page<ReviewDTO> findAllPaged(PageRequest pageRequest) {
+        Page<Review> list = repository.findAll(pageRequest);
+        // Lambda expression that transform list category into categoryDTO
+        return list.map(x -> new ReviewDTO(x));
 
+    }
 }

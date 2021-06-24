@@ -56,11 +56,8 @@ const FormReview = () => {
         })
             .then(() => {
                  
-                toast.success('Avaliação cadastrado com sucesso!')
-            
-               history.replace(from)
-                  console.log('chamar toast;;;');
-               
+             toast.success('Avaliação cadastrado com sucesso!')
+             history.replace(`/movie/${movieId}`)                             
                 
             })
             .catch(() => {
